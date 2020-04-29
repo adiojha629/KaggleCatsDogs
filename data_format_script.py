@@ -24,12 +24,10 @@ def createDir(directory):
     
 
 direct = "C:/Users/Monica/Desktop/KaggleCatsDogs"
-
 createDir(direct)
     
 train = direct + "/train"
 CDTrain_dir = direct +"/CatDogTrain"
-
 createDir(CDTrain_dir)
 
 cats_dir = CDTrain_dir +"/cats"
