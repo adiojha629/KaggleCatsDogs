@@ -85,14 +85,14 @@ d_m_val_dir = m_val_dir + "/dogs_val"
 createDir(d_m_val_dir)
 
 #now add the images to these new directories
-if(len(os.listdir(c_m_ting_dir)) == 0):#only add 1000 images if there are no images in there
+if(len(os.listdir(c_m_val_dir)) == 0):#only add 1000 images if there are no images in there
     cats_entrys = os.listdir(cats_dir);
     for i in indexs_cat_val:
         img = cats_entrys[i]
         img_path = os.path.join(cats_dir,img)
         shutil.copy(img_path,c_m_val_dir)
 
-if(len(os.listdir(d_m_ting_dir)) == 0):#only add 1000 images if there are no images in there
+if(len(os.listdir(d_m_val_dir)) == 0):#only add 1000 images if there are no images in there
     dogs_entrys = os.listdir(dogs_dir);
     for i in indexs_dog_val:
         img = dogs_entrys[i]
