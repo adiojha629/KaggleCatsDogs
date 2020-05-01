@@ -57,6 +57,40 @@ train_datagen = ImageDataGenerator(
         zoom_range = 0.2, #randomly zoom in on the image
         horizontal_flip = True,
         vertical_flip = True)
+val_datagen = ImageDataGenerator (
+        rescale = 1.0 / 255)
 
+train_data_dir = "C:/Users/Monica/Desktop/KaggleCatsDogs/model_testing"
+img_height = 128
+img_width = 128
+val_data_dir = "C:/Users/Monica/Desktop/KaggleCatsDogs//model_validation"
+
+samples = 2000
+epochs = 20
+batch_size = 4
+
+"""Generating training and validation images"""
+
+train_generator = train_datagen.flow_from_directory(
+        train_data_dir,
+        target_size = (img_height, img_width),
+        batch_size = batch_size,
+        class_mode = 'categorical'
+        )
+val_generator = val_datagen.flow_from_directory(
+        val_data_dir,
+        target_size = (img_height, img_weight),
+        batch_size = batch_size,
+        class_mode = 'categorical')
+
+"""Fit the imges to the training set"""
+history = model.fit_generator(
+        train_generator,
+        steps_per_epoch = samples,
+        epochs = epochs,
+        validation_data = val_generator,
+        validation_steps = samples
+        )
+    
 
 
