@@ -79,7 +79,7 @@ train_generator = train_datagen.flow_from_directory(
         )
 val_generator = val_datagen.flow_from_directory(
         val_data_dir,
-        target_size = (img_height, img_weight),
+        target_size = (img_height, img_width),
         batch_size = batch_size,
         class_mode = 'categorical')
 
