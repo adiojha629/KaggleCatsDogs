@@ -6,7 +6,8 @@ Created on Thu Apr 16 15:23:28 2020
 """
 
 import tensorflow as tf
-
+#import keras
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 #Network from scratch
 
 #Input layer
@@ -33,6 +34,8 @@ dropout2 = tf.keras.layers.Dropout(rate = 0.3)(hidden2)
 
 out = tf.keras.layers.Dense(2, activation = 'softmax')(dropout2)
 
+
+
 model = tf.keras.Model(inputs = inp, outputs = out)
 
 sgd = tf.keras.optimizers.SGD(lr= .0001)
@@ -43,3 +46,16 @@ model.compile(optimizer=adam,
 
 # Summarize convolutional neural network architecture
 model.summary()
+
+""" Generate images """
+train_datagen = ImageDataGenerator(
+        rescale = 1.0 / 255, # rescale the RGB values down to prevent overfitting
+        rotation_range = 20, #Rotate some images to reduce overfitting
+        width_shift_range = 0.1, #translate the image randomly by +/- 0.1 of the width of image
+        height_shift_range = 0.1,
+        shear_range = 0.2, #randomly distort the image by 0.2 (shear is a mathematical function)
+        zoom_range = 0.2, #randomly zoom in on the image
+        horizontal_flip = True,
+        vertical_flip = True)
+
+

@@ -53,20 +53,51 @@ createDir(c_m_ting_dir)
 d_m_ting_dir = m_ting_dir + "/dogs_model_testing"
 createDir(d_m_ting_dir)
 
-#now add the images to these new directories
-cats_entrys = os.listdir(cats_dir);
-for i in indexs_cats:
-    img = cats_entrys[i]
-    img_path = os.path.join(cats_dir,img)
-    shutil.copy(img_path,c_m_ting_dir)
 
-dogs_entrys = os.listdir(dogs_dir);
-for i in indexs_dogs:
-    img = dogs_entrys[i]
-    img_path = os.path.join(dogs_dir,img)
-    shutil.copy(img_path,d_m_ting_dir)
+#now add the images to these new directories
+if(len(os.listdir(c_m_ting_dir)) == 0):#only add 1000 images if there are no images in there
+    cats_entrys = os.listdir(cats_dir);
+    for i in indexs_cats:
+        img = cats_entrys[i]
+        img_path = os.path.join(cats_dir,img)
+        shutil.copy(img_path,c_m_ting_dir)
+
+if(len(os.listdir(d_m_ting_dir)) == 0):#only add 1000 images if there are no images in there
+    dogs_entrys = os.listdir(dogs_dir);
+    for i in indexs_dogs:
+        img = dogs_entrys[i]
+        img_path = os.path.join(dogs_dir,img)
+        shutil.copy(img_path,d_m_ting_dir)
     
-    
+""" Now generate validation images """
+indexs_cat_val = random.sample(range(num_cats), 1000)
+indexs_dog_val = random.sample(range(num_dogs), 1000)
+
+#Make the model_validation directory
+m_val_dir = direct + "/model_validation"
+createDir(m_val_dir)
+
+#make the cats_val_testing folder
+c_m_val_dir = m_val_dir + "/cats_val"
+createDir(c_m_val_dir)
+#make the dogs_val_testing folder
+d_m_val_dir = m_val_dir + "/dogs_val"
+createDir(d_m_val_dir)
+
+#now add the images to these new directories
+if(len(os.listdir(c_m_ting_dir)) == 0):#only add 1000 images if there are no images in there
+    cats_entrys = os.listdir(cats_dir);
+    for i in indexs_cat_val:
+        img = cats_entrys[i]
+        img_path = os.path.join(cats_dir,img)
+        shutil.copy(img_path,c_m_val_dir)
+
+if(len(os.listdir(d_m_ting_dir)) == 0):#only add 1000 images if there are no images in there
+    dogs_entrys = os.listdir(dogs_dir);
+    for i in indexs_dog_val:
+        img = dogs_entrys[i]
+        img_path = os.path.join(dogs_dir,img)
+        shutil.copy(img_path,d_m_val_dir)
 
 
 
