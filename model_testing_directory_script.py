@@ -25,7 +25,7 @@ def createDir(directory):
 
 """Script itself """
 #Variables
-direct = "C:/Users/Monica/Desktop/KaggleCatsDogs"
+direct = "C:/Users/Suman/Documents/GitHub/KaggleCatsDogs"
 createDir(direct)
 CDTrain_dir = direct +"/CatDogTrain"
 createDir(CDTrain_dir)
@@ -47,10 +47,10 @@ m_ting_dir = direct + "/model_testing"
 createDir(m_ting_dir)
 
 #make the cats_model_testing folder
-c_m_ting_dir = m_ting_dir + "/cats_model_testing"
+c_m_ting_dir = m_ting_dir + "/cats"
 createDir(c_m_ting_dir)
 #make the dogs_model_testing folder
-d_m_ting_dir = m_ting_dir + "/dogs_model_testing"
+d_m_ting_dir = m_ting_dir + "/dogs"
 createDir(d_m_ting_dir)
 
 
@@ -78,10 +78,10 @@ m_val_dir = direct + "/model_validation"
 createDir(m_val_dir)
 
 #make the cats_val_testing folder
-c_m_val_dir = m_val_dir + "/cats_val"
+c_m_val_dir = m_val_dir + "/cats"
 createDir(c_m_val_dir)
 #make the dogs_val_testing folder
-d_m_val_dir = m_val_dir + "/dogs_val"
+d_m_val_dir = m_val_dir + "/dogs"
 createDir(d_m_val_dir)
 
 #now add the images to these new directories

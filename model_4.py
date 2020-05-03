@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Apr 16 15:23:28 2020
+Created on May 2 2020
 
 @author: adioj
 """
@@ -13,20 +13,22 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 #Input layer
 inp = keras.layers.Input(shape = (128,128,3))
 
-#First convolutional layer has 32 filters with 3x3 kernels, Relu activation
-conv1 = keras.layers.Conv2D(32,kernel_size = (3, 3), activation = 'relu', padding = 'same')(inp)
+#Block #1
+b1_c1 = keras.layers.Conv2D(32,kernel_size = (3, 3), activation = 'relu', padding = 'same')(inp)
+b1_c2 =keras.layers.Conv2D(32,kernel_size = (3, 3), activation = 'relu', padding = 'same')(b1_c1)
+b1_pool = keras.layers.MaxPool2D(pool_size = (2,2))(b1_c2)
 
-pool1 = keras.layers.MaxPool2D(pool_size = (2,2))(conv1)
+#Block #2
+b2_c1 = keras.layers.Conv2D(64,kernel_size = (3, 3), activation = 'relu', padding = 'same')(b1_pool)
+b2_c2 = keras.layers.Conv2D(64,kernel_size = (3, 3), activation = 'relu', padding = 'same')(b2_c1)
+b2_pool = keras.layers.MaxPool2D(pool_size = (2,2))(b2_c2)
 
-conv2 = keras.layers.Conv2D(64,kernel_size = (3, 3), activation = 'relu', padding = 'same')(pool1)
+#Block #3
+b3_c1 = keras.layers.Conv2D(128,kernel_size = (3, 3), activation = 'relu', padding = 'same')(b2_pool)
+b3_c2 = keras.layers.Conv2D(128,kernel_size = (3, 3), activation = 'relu', padding = 'same')(b3_c1)
+b3_c3 = keras.layers.Conv2D(128,kernel_size = (3, 3), activation = 'relu', padding = 'same')(b3_c2)
 
-pool2 = keras.layers.MaxPool2D(pool_size = (2,2))(conv2)
-
-conv3 = keras.layers.Conv2D(128,kernel_size = (3, 3), activation = 'relu', padding = 'same')(pool2)
-
-pool3 = keras.layers.MaxPool2D(pool_size = (2,2))(conv3)
-
-flat = keras.layers.Flatten()(pool3)
+flat = keras.layers.Flatten()(b3_c3)
 
 hidden1 = keras.layers.Dense(256, activation = 'relu')(flat)
 

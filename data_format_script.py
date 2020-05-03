@@ -23,7 +23,7 @@ def createDir(directory):
         print("Directory "+directory+" already exists")
     
 
-direct = "C:/Users/Monica/Desktop/KaggleCatsDogs"
+direct = "C:/Users/Suman/Documents/GitHub/KaggleCatsDogs"
 createDir(direct)
     
 train = direct + "/train"
@@ -35,7 +35,7 @@ dogs_dir = CDTrain_dir +"/dogs"
 createDir(cats_dir)
 createDir(dogs_dir)
 
-train_dir = direct + "/train"
+train_dir = "C:/Users/Suman/Desktop/train"
 
 img_arr = os.listdir(train_dir)
 for img in img_arr:
